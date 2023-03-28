@@ -4,10 +4,10 @@ import { useState } from 'react';
 import styles from './Task.module.css'
 
 type Taskprops = {
-    id: number;
+    id: string;
     content: string;
     complete: boolean;
-    onDeleteTaskt: (id: number) => void;
+    onDeleteTaskt: (id: string) => void;
     onChangeTask: (value: boolean) => void;
 }
 

@@ -57,25 +57,25 @@
     border-color: var(--blue-dark);
 }
 
-/* When the checkbox is checked, add a blue background */
 .containerCheckbox input:checked~.checkmark {
-    background-color: var(--purple);
-    border-color: var(--purple);
+    background-color: var(--purple-dark);
+    border-color: var(--purple-dark);
 }
 
-/* Create the checkmark/indicator (hidden when not checked) */
 .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
 
-/* Show the checkmark when checked */
 .containerCheckbox input:checked~.checkmark:after {
     display: block;
 }
 
-/* Style the checkmark/indicator */
+.containerCheckbox input:checked~.checkmark:hover {
+    background: var(--purple);
+}
+
 .containerCheckbox .checkmark:after {
     left: 7px;
     top: 3px;
@@ -87,6 +87,7 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
 
 .task button {
     display: flex;

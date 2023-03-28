@@ -2,28 +2,23 @@ import { PlusCircle } from 'phosphor-react';
 import { ChangeEvent, FormEvent, InvalidEvent, useState } from 'react';
 import { Task } from './Task';
 import styles from './ToDoForm.module.css'
-
-type Taskprops = {
-    id: number;
-    content: string;
-    complete: boolean;
-}
+import uuid from 'uuidv4';
 
 export function ToDoForm() {
     
     const [tasks, setTasks] = useState([
         {
-            id: 1,
+            id: uuid(),
             complete: false,
             content: "Estudar Node."
         },
         {
-            id: 2,
+            id: uuid(),
             complete: true,
             content: "Estudar React."
         },
         {
-            id: 3,
+            id: uuid(),
             complete: true,
             content: "Ler um livro"
         },
@@ -42,7 +37,7 @@ export function ToDoForm() {
     function handleNewTask(event: FormEvent){
         event.preventDefault();
         setTasks([...tasks, {
-            id: tasks.length + 1,
+            id: uuid(),
             complete: false,
             content: newTask
         }])
@@ -58,7 +53,7 @@ export function ToDoForm() {
         event.target.setCustomValidity("Campo Obrigatório");
     }
 
-    function deleteTask(id : number){
+    function deleteTask(id : string){
         const tasksDeletedOne = tasks.filter(task => {
             return task.id !== id
         })
@@ -101,7 +96,7 @@ export function ToDoForm() {
                     <ul>
                     {tasks.map((task, index) => {
                     return (
-                        <li key={index}> 
+                        <li key={task.id}> 
                             <Task   
                                 id={task.id} 
                                 content={task.content} 
@@ -120,20 +115,3 @@ export function ToDoForm() {
     );
 }
 
-
-{/* // export function ToDoForm() {
-//     return (
-//         <div className={styles.todo}>
-//             <input placeholder='Adicione uma nova tarefa' />
-//             <footer className={styles.todoFooter}>
-//                 <button
-//                     type='submit'
-//                 >
-//                     Criar
-//                     <PlusCircle size={20}  />
-//                 </button>
-//             </footer>
-//         </div>
-
-//     );
-// } */}
